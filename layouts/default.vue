@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nuxt/>
+    <nuxt/>  
   </div>
 </template>
 
@@ -15,7 +15,11 @@ html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
-
+header{
+  background-color:#00BFFF;//deepskyblue
+  width:100%; 
+  //height:120px;
+}
 *, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
@@ -27,7 +31,7 @@ html {
   border: 1px solid #3b8070;
   color: #3b8070;
   text-decoration: none;
-  padding: 10px 30px;
+  padding: 10px 30px;   
 }
 
 .button--green:hover {

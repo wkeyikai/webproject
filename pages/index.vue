@@ -14,19 +14,25 @@
           target="_blank"
           :class="className[item.class]">{{item.name}}</a>
       </div>
+      <nuxt-link to="/about">about</nuxt-link>
     </div>
-  </section>
+    <!--<template slot="header">
+      
+    </template>-->
+  </section>   
 </template>
 
 <script>
 import {mapActions,mapGetters} from 'vuex'
 import AppLogo from '~/components/AppLogo.vue'
-
+let layout = 'dark'
 export default {
   components: {
     AppLogo
   },
-  layout: 'dark',
+  layout(content){
+    return layout
+  },
   scrollToTop: true,
    data(){
     return {
@@ -43,20 +49,20 @@ export default {
     }
   },
   created() {
-    this.init()
+    //this.init()
   },
   methods:{
-    ...mapActions([
+    /*...mapActions([
       'MENU_LIST'
     ]), 
     init(){
       this['MENU_LIST']()
     }
-  },
+  },   *
   computed:{
-    ...mapGetters([
+    /*...mapGetters([
       'menuList'
-    ])
+    ]) */
   }
 }
 </script>

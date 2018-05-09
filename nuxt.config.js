@@ -16,7 +16,22 @@ export default {
   /*
   ** Build configuration
   */
-  /*build: {
+  build: {
+     vendor: [
+      'axios',
+      'element-ui'
+    ],
+    /*babel: {
+      'plugins': [['component', [
+        {
+          'libraryName': 'element-ui',
+          'styleLibraryName': 'theme-chalk'
+        },
+        'transform-async-to-generator',
+        'transform-runtime'
+      ]]],
+      comments: true
+    }, */ 
     /*
     ** Run ESLint on save
     */
@@ -29,23 +44,23 @@ export default {
           exclude: /(node_modules)/
         })
       }
-    }
-  },   */
+    } */
+  },
   render: {
     bundleRenderer: {
       shouldPreload: (file, type) => {
         return ['script', 'style', 'font'].includes(type)
       }
     }
-  }, 
+  },
   /*
   ** Customize the progress bar color
   */
   //loading: { color: '#3B8070' },
   loading: '~/components/loading.vue',
-  css:['~/css/main.css'],
+  css:['~/css/main.css','element-ui/lib/theme-chalk/index.css'],
   plugins: [
-      '~/plugins/i18n.js',
+      '~/plugins/i18n.js',{src: '~plugins/element-ui', ssr: true} 
   ],
   /*
   ** Add server middleware

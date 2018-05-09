@@ -3,6 +3,7 @@
   "dependencies": {
     "axios": "^0.16.1",
     "body-parser": "^1.17.2",
+    "element-ui": "^2.3.7",
     "express": "^4.15.3",
     "express-session": "^1.15.3",
     "nuxt-edge": "latest",
