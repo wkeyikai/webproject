@@ -8,24 +8,15 @@
       <h2 class="subtitle">
         Nuxt.js project
       </h2>
-      <div class="links">
-        <a  v-for="(item,idx) in menuList"
-          :href="'#'+idx"
-          target="_blank"
-          :class="className[item.class]">{{item.name}}</a>
-      </div>
       <nuxt-link to="/about">about</nuxt-link>
     </div>
-    <!--<template slot="header">
-      
-    </template>-->
   </section>   
 </template>
 
 <script>
 import {mapActions,mapGetters} from 'vuex'
 import AppLogo from '~/components/AppLogo.vue'
-let layout = 'dark'
+let layout = 'layoutA'
 export default {
   components: {
     AppLogo
