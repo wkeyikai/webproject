@@ -1,6 +1,15 @@
 <template>
   <nav>
-    <el-menu :default-active="1" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+    <el-menu
+      :background-color="'rgba(0,0,0,.0)'"
+      :text-color="'#ffffff'" 
+      :active-text-color="'#ffffff'"
+      :default-active="1" 
+      collapse-transition="true"
+      class="el-menu-demo" 
+      mode="horizontal" 
+      @select="handleSelect"
+      >
       <el-menu-item v-for="(item,idx) in data" :href="item.path" :key="idx" :index="idx">{{item.name}}</el-menu-item>
     </el-menu>
    <!-- <a v-for="(item,idx) in data" :href="item.path">{{item.name}}</a>      -->

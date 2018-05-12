@@ -58,9 +58,15 @@ export default {
   */
   //loading: { color: '#3B8070' },
   loading: '~/components/loading.vue',
-  css:['~/css/main.css','element-ui/lib/theme-chalk/index.css'],
+  css:[
+    '~/css/main.css',
+    'element-ui/lib/theme-chalk/index.css' ,
+    'swiper/dist/css/swiper.css'
+  ],
   plugins: [
-      '~/plugins/i18n.js',{src: '~plugins/element-ui', ssr: true} 
+      '~/plugins/i18n.js',
+      {src: '~plugins/element-ui', ssr: true} ,
+      {src:'~/plugins/vue-awesome-swiper.js', ssr: false}
   ],
   /*
   ** Add server middleware
