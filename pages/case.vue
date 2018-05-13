@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>about</h1>
+        <h1>case</h1>
         <p></p>
         <!--<nuxt-link to="/">Back to the home page</nuxt-link>-->
     </div>

@@ -10,7 +10,7 @@
         mode="horizontal" 
         @select="handleSelect"
         >
-            <el-menu-item v-for="(item,idx) in data" :href="item.path" :key="idx" :index="idx">{{item.name}}</el-menu-item>
+            <el-menu-item v-for="(item,idx) in data" :key="idx" :index="idx"><nuxt-link :to="'/'+item.path">{{item.name}}</nuxt-link></el-menu-item>
         </el-menu>
     <!-- <a v-for="(item,idx) in data" :href="item.path">{{item.name}}</a>      -->
     </nav>

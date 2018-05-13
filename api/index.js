@@ -8,11 +8,11 @@ const router = express.Router()
 var app = express()
 router.use((req, res, next) => {
 
-  Object.setPrototypeOf(req, app.request)
-  Object.setPrototypeOf(res, app.response)
-  req.res = res
-  res.req = req
-  next()
+    Object.setPrototypeOf(req, app.request)
+    Object.setPrototypeOf(res, app.response)
+    req.res = res
+    res.req = req
+    next()
 })
 let accessControlAllow = (res)=>{
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -29,28 +29,28 @@ let accessControlAllow = (res)=>{
 // Add POST - /api/menuList
 router.post('/menuList', (req, res) => {
    accessControlAllow(res)
-   console.log('menuList api call start')                 
-   res.json({
-      list:[{name:'News',submane:'³Ì·s®ø®§',class:'0',path:'a'},
-            {name:'About Us',submane:'³Ì·s®ø®§',class:'1',path:'b'} ,
-            {name:'prodect',submane:'²£«~¸ê°T',class:'1',path:'b'} ,
-            {name:'Case Study',submane:'¦¨¥\®×¨Ò',class:'1',path:'b'} , 
-            {name:'Support',submane:'ªA°È¤ä´©',class:'1',path:'b'} ,                               
-            {name:'Cooperation',submane:'¥ø·~¦X§@',class:'1',path:'b'} , 
-            {name:'Contact',submane:'Ápµ¸§Ú­Ì',class:'1',path:'b'}
+    console.log('menuList api call start')                 
+    res.json({
+        list:[  {name:'News',submane:'æœ€æ–°æ¶ˆæ¯',class:'0',path:'news'},
+                {name:'About Us',submane:'é—œæ–¼æˆ‘å€‘',class:'1',path:'about'} ,
+                {name:'prodect',submane:'ç”¢å“è³‡è¨Š',class:'1',path:'prodect'} ,
+                {name:'Case Study',submane:'æˆåŠŸæ¡ˆä¾‹',class:'1',path:'case'} , 
+                {name:'Support',submane:'æœå‹™æ”¯æ´',class:'1',path:'support'} ,                               
+                {name:'Cooperation',submane:'ä¼æ¥­åˆä½œ',class:'1',path:'cooperation'} , 
+                {name:'Contact',submane:'è¯çµ¡æˆ‘å€‘',class:'1',path:'contact'}
 
-   ]})
-   console.log('menuList api call end') 
-   //return;
-  /*if (req.body.username === 'demo' && req.body.password === 'demo') {
-    req.session.authUser = { username: 'demo' }
-    return res.json({ username: 'demo' })
-  }
-  res.status(401).json({ message: 'Bad credentials' })   */
+    ]})
+    console.log('menuList api call end') 
+    //return;
+    /*if (req.body.username === 'demo' && req.body.password === 'demo') {
+        req.session.authUser = { username: 'demo' }
+        return res.json({ username: 'demo' })
+    }
+    res.status(401).json({ message: 'Bad credentials' })   */
 })
 
 // Export the server middleware
 export default {
-  path: '/api',
-  handler: router
+    path: '/api',
+    handler: router
 }
