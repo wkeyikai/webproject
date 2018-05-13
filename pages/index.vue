@@ -1,7 +1,7 @@
 <template>
   <section class="container">
     <div>
-      <app-logo/>
+      <!--<app-logo/>-->
       <h1 class="title">
         DEMO
       </h1>

@@ -41,19 +41,23 @@ export default {
     data(){
       return {
         swiperOption: {
-          loop: true,
             direction:'vertical',
-            effect : 'fade',
+            /*effect : 'fade',
             fade: {
                 crossFade: false,
-            },
+            },*/
             clickable :true,
             preloadImages:true,
-            //slidesPerView: 'auto',
-            slidesPerView: 1,
+            slidesPerView: 'auto',
+            //slidesPerView: 1,
+            loop: true,
             centeredSlides: true,
+            paginationClickable: true,
             mousewheel: true,
-            //spaceBetween: 30,
+            autoHeight: true, //高度随内容变化
+            //initialSlide: 0,
+            spaceBetween: 0,
+            //height:'100%',
             //speed:1000,
             pagination: {
                 el: '.swiper-pagination',
@@ -102,6 +106,7 @@ export default {
 #layoutA{
     %hone-base{
         width:100%;
+        height:100%;
         background-repeat:no-repeat;    
     }
     .home-1{
