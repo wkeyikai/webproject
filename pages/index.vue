@@ -4,13 +4,13 @@
             <div class="swiper-slide" v-for="(item, index ) in ['home-1','home-2','home-3']" :key="item" :name="item">
                 <div :class="item" :name="item">
                     <transition name="slideleft" v-if="item=='home-1'">
-                        <el-aside v-if="swiperRealIndex==index" width="500px" >Aside{{index}}</el-aside>
+                        <el-aside v-show="swiperRealIndex==index||true" width="500px" >Aside{{index}}</el-aside>
                     </transition>
                     <transition name="slideleft" v-if="item=='home-2'">
-                        <el-aside v-if="swiperRealIndex==index" width="500px" class="el-aside-right">Aside{{index}}</el-aside>
+                        <el-aside v-show="swiperRealIndex==index" width="500px" class="el-aside-right">Aside{{index}}</el-aside>
                     </transition>
                     <transition name="slideleft" v-if="item=='home-3'">
-                        <el-aside v-if="swiperRealIndex==index" width="500px" >Aside{{index}}</el-aside>
+                        <el-aside v-show="swiperRealIndex==index" width="500px" >Aside{{index}}</el-aside>
                     </transition>
                 </div>            
             </div>
@@ -78,7 +78,7 @@ export default {
 
                         }
                         me.swiperRealIndex = this.realIndex
-                        //console.log(this.realIndex);
+                        console.log(this.realIndex);
                     },
                     tap() {
                         //console.log('onTap', this);

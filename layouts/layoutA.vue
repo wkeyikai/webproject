@@ -55,17 +55,17 @@ export default {
         this.init()
     },
     methods:{
-      ...mapActions([
-        'MENU_LIST'
-      ]),  
-      init(){
-        this['MENU_LIST']()
-      }
+        ...mapActions([
+            'MENU_LIST'
+        ]),  
+        init(){
+            this['MENU_LIST']()
+        }
     },
     computed:{
-      ...mapGetters([
-        'menuList'
-      ])  
+        ...mapGetters([
+            'menuList'
+        ])  
     }
 }
 </script>
@@ -113,7 +113,7 @@ export default {
         margin: 0px;
         padding: 0px;
         text-align: center;
-        line-height: 160px;
+        min-height: 100%;
     }  
 }
 
