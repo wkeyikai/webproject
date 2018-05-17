@@ -48,6 +48,25 @@ router.post('/menuList', (req, res) => {
     }
     res.status(401).json({ message: 'Bad credentials' })   */
 })
+//menuList
+// Add POST - /api/homeData
+router.post('/homeData', (req, res) => {
+    accessControlAllow(res)
+    console.log('homeData api call start')                 
+    res.json({
+        list:[  {name:'home-bg-1',subname:'',class:'0',path:'home-bg-1',content:'home-bg-1'},
+                {name:'home-bg-2',subname:'',class:'1',path:'home-bg-2',content:'home-bg-2'},
+                {name:'home-bg-3',subname:'',class:'1',path:'home-bg-3',content:'home-bg-3'}
+
+    ]})
+    console.log('homeData api call end') 
+    //return;
+    /*if (req.body.username === 'demo' && req.body.password === 'demo') {
+        req.session.authUser = { username: 'demo' }
+        return res.json({ username: 'demo' })
+    }
+    res.status(401).json({ message: 'Bad credentials' })   */
+})
 //AboutData
 // Add POST - /api/AboutData
 router.post('/aboutData', (req, res) => {

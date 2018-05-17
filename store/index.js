@@ -7,7 +7,8 @@ const state = {
     locale: 'en',
     menuList: [],
     aboutData: {},
-    prodectData:{}
+    prodectData:{},
+    homeData:{}
 }
 let apiServer='http://127.0.0.1:3000'//tmp
 let actions = {
@@ -40,6 +41,11 @@ let actions = {
         const response = await axios.post(apiServer+'/api/prodectData')
         console.log('response',response)
         commit('prodect_data',response.data)
+    },
+    async HOME_DATA({ commit, dispatch, state }){
+        const response = await axios.post(apiServer+'/api/homeData')
+        //console.log('response',response)
+        commit('home_data',response.data)
     }
 }
 let mutations = {
@@ -56,12 +62,16 @@ let mutations = {
     },
     prodect_data(state, payload){
         state.prodectData = payload
+    },
+    home_data(state, payload){
+        state.homeData = payload
     }
 }                     
 let getters ={
     menuList: state => state.menuList,
     aboutData: state => state.aboutData,
     prodectData: state => state.prodectData,
+    homeData: state => state.homeData
 }
 let list ={
     state,

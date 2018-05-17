@@ -4,13 +4,13 @@
         :background-color="'rgba(0,0,0,.0)'"
         :text-color="'#ffffff'" 
         :active-text-color="'#ffffff'"
-        default-active="1" 
-        collapse-transition="true"
+        :default-active="'1'" 
+        :collapse-transition="true"
         class="el-menu-demo" 
         mode="horizontal" 
         @select="handleSelect"
         >
-            <el-menu-item v-for="(item,idx) in data" :key="idx" :index="idx"><nuxt-link :to="'/'+item.path">{{item.name}}</nuxt-link></el-menu-item>
+            <el-menu-item v-for="(item,idx) in data" :key="item.name" :index="item.name"><nuxt-link :to="'/'+item.path">{{item.name}}</nuxt-link></el-menu-item>
         </el-menu>
     <!-- <a v-for="(item,idx) in data" :href="item.path">{{item.name}}</a>      -->
     </nav>

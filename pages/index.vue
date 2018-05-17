@@ -1,21 +1,27 @@
 <template>
-    <div v-swiper:mySwiper="swiperOption" class="swiper-contain">                  
-        <div class="swiper-wrapper">
-            <div class="swiper-slide" v-for="(item, index ) in ['home-1','home-2','home-3']" :key="item" :name="item">
-                <div :class="item" :name="item">
-                    <transition name="slideleft" v-if="item=='home-1'">
-                        <el-aside v-show="swiperRealIndex==index||true" width="500px" >Aside{{index}}</el-aside>
-                    </transition>
-                    <transition name="slideleft" v-if="item=='home-2'">
-                        <el-aside v-show="swiperRealIndex==index" width="500px" class="el-aside-right">Aside{{index}}</el-aside>
-                    </transition>
-                    <transition name="slideleft" v-if="item=='home-3'">
-                        <el-aside v-show="swiperRealIndex==index" width="500px" >Aside{{index}}</el-aside>
-                    </transition>
-                </div>            
+    <div>
+        <div v-if="homeList.length" v-swiper:mySwiper="swiperOption" class="swiper-contain"  @someSwiperEvent="callback">                  
+            <div class="swiper-wrapper my-wrapper" >
+                <div class="swiper-slide" v-for="(item, index ) in homeList" :key="item.name" :name="item">
+                    <!--v-bind:style="{ 'background-image': `url(${item.path}.jpg)` }
+                    style="{ backgroundImage: 'url(' + require(@/assets/img/${page.image}) + ')' }"-->
+                    <!--< :style="{ 'background-image': `url(home-bg-${item}.jpg)` }">-->
+                    <div class="home-base" :style="{backgroundImage: `url('${item.path}.jpg')`}">
+                        <!--<img class="home-base" :src="require(`~/assets/home-bg-${item}.jpg`)"/>-->
+                        <transition name="slideleft" v-if="index==0">
+                            <el-aside v-show="swiperRealIndex==index" width="500px" >{{swiperRealIndex}}</el-aside>
+                        </transition>
+                        <transition name="slideleft" v-if="index==1">
+                            <el-aside v-show="swiperRealIndex==index" width="500px" class="el-aside-right">Aside{{index}}</el-aside>
+                        </transition>
+                        <transition name="slideleft" v-if="index==2">
+                            <el-aside v-show="swiperRealIndex==index" width="500px" >Aside{{index}}</el-aside>
+                        </transition>
+                    </div>            
+                </div>
             </div>
+            <div class="swiper-pagination"></div>
         </div>
-        <div class="swiper-pagination"></div>
     </div>
     <!--<section class="container">
         <div>
@@ -46,14 +52,16 @@ export default {
     data(){
         let me = this
         return {
+            loading:false,
             swiperOption: {
+                swiperRealIndex:-1,
                 direction:'vertical',
                 /*effect : 'fade',
                 fade: {
                     crossFade: false,
                 },*/
                 clickable :true,
-                preloadImages:true,
+                //preloadImages:true,
                 slidesPerView: 'auto',
                 //slidesPerView: 1,
                 loop: true,
@@ -71,20 +79,23 @@ export default {
                 },
                 on: {
                     slideChange(data) {
+                        //console.log('obj',this.realIndex)
                         //console.log('onSlideChangeEnd', this);
                     },
-                    slideChangeTransitionEnd: function(){
+                    slideChangeTransitionEnd: function(obj){
+                        //console.log('obj',obj)
                         if(this.swiperRealIndex==0){
 
                         }
                         me.swiperRealIndex = this.realIndex
-                        console.log(this.realIndex);
+                        //console.log('>>',me.swiperRealIndex);
                     },
                     tap() {
                         //console.log('onTap', this);
                     }
                 }
             },
+            homeList:[],
             swiperRealIndex:-1,
             title:this.$t('home.title')+'followTeK',
             className : {'0':'button--green','1':'button--grey'}
@@ -99,47 +110,67 @@ export default {
         }
     },
     created() {
-        //this.init()
+        this.init()
+    },
+    async mounted(){
+        setTimeout(() => {
+            this.homeList = this.homeData.list 
+        }, 100)
     },
     methods:{
-        /*...mapActions([
-        'MENU_LIST'
+        ...mapActions([
+            'HOME_DATA'
         ]), 
-        init(){
-        this['MENU_LIST']()
+        async init(){
+            await this['HOME_DATA']()
+        },
+        callback(data){
+            console.log('callback',data)
         }
-    },   *
+    },
     computed:{
-        /*...mapGetters([
-        'menuList'
-        ]) */
+        ...mapGetters([
+            'homeData'
+        ]),
+        test() {
+            console.log(this.swiperRealIndex)
+            return this.swiperRealIndex
+        }
     }
 }
 </script>
 
 <style lang="scss">
 .swiper-contain{
-         margin:0px;
+        margin:0px;
         padding:0px;
         z-index:0;
         /*width:100%;
         height:100%;*/
-    %hone-base{
+    %home-base{
         min-height: 100vh;
+        height:100vh;
         width:100%;
+        min-height: 100vh;
         background-repeat:no-repeat;    
     }
+    .home-base{
+        @extend  %home-base;
+    }
     .home-1{
-        @extend  %hone-base;
+        @extend  %home-base;
         background-image: url('~/static/home-bg-1.jpg');
     }
     .home-2{
-        @extend  %hone-base;
+        @extend  %home-base;
         background-image: url('~/static/home-bg-2.jpg');
     }
     .home-3{
-        @extend  %hone-base;
+        @extend  %home-base;
         background-image: url('~/static/home-bg-3.jpg');
+    }
+    .swiper-wrapper{
+        height: 100vh;
     }
     .swiper-pagination {
         right: 15px;
