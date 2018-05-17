@@ -99,7 +99,7 @@ export default {
         color: #333;
         text-align: center;
         line-height: 200px;
-        min-height: 100vh;
+        //min-height: 100vh;
         //width:500px;
     }
     .el-aside-right{

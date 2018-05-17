@@ -54,9 +54,13 @@ router.post('/homeData', (req, res) => {
     accessControlAllow(res)
     console.log('homeData api call start')                 
     res.json({
-        list:[  {name:'home-bg-1',subname:'',class:'0',path:'home-bg-1',content:'home-bg-1'},
-                {name:'home-bg-2',subname:'',class:'1',path:'home-bg-2',content:'home-bg-2'},
-                {name:'home-bg-3',subname:'',class:'1',path:'home-bg-3',content:'home-bg-3'}
+        list:[  
+                {name:'home-bg-1',subname:'',class:'0',path:'MD-1-T.png',content:'home-bg-1'},
+                {name:'home-bg-2',subname:'',class:'1',path:'MD-2-T.png',content:'home-bg-2'},
+                {name:'home-bg-3',subname:'',class:'1',path:'MD-3-T.png',content:'home-bg-3'}
+                /*{name:'home-bg-1',subname:'',class:'0',path:'home-bg-1.jpg',content:'home-bg-1'},
+                {name:'home-bg-2',subname:'',class:'1',path:'home-bg-2.jpg',content:'home-bg-2'},
+                {name:'home-bg-3',subname:'',class:'1',path:'home-bg-3.jpg',content:'home-bg-3'}*/
 
     ]})
     console.log('homeData api call end') 

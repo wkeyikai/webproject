@@ -1,21 +1,24 @@
 <template>
-    <div>
+    <div >
         <div v-if="homeList.length" v-swiper:mySwiper="swiperOption" class="swiper-contain"  @someSwiperEvent="callback">                  
             <div class="swiper-wrapper my-wrapper" >
                 <div class="swiper-slide" v-for="(item, index ) in homeList" :key="item.name" :name="item">
                     <!--v-bind:style="{ 'background-image': `url(${item.path}.jpg)` }
                     style="{ backgroundImage: 'url(' + require(@/assets/img/${page.image}) + ')' }"-->
                     <!--< :style="{ 'background-image': `url(home-bg-${item}.jpg)` }">-->
-                    <div class="home-base" :style="{backgroundImage: `url('${item.path}.jpg')`}">
+                    <div class="home-base" 
+                        :style="{
+                                backgroundImage: `url('${item.path}')`, 
+                                backgroundPosition:index%2==0?`center 100px`:`center bottom 100px`}">
                         <!--<img class="home-base" :src="require(`~/assets/home-bg-${item}.jpg`)"/>-->
-                        <transition name="slideleft" v-if="index==0">
-                            <el-aside v-show="swiperRealIndex==index" width="500px" >{{swiperRealIndex}}</el-aside>
+                        <transition name="slideleft" v-if="index==0||index==-1">
+                            <el-aside v-show="swiperRealIndex==index||index==-1" width="100%" height="500px" style="position:absolute;top:500px;">{{swiperRealIndex}}</el-aside>
                         </transition>
                         <transition name="slideleft" v-if="index==1">
-                            <el-aside v-show="swiperRealIndex==index" width="500px" class="el-aside-right">Aside{{index}}</el-aside>
+                            <el-aside v-show="swiperRealIndex==index" width="100%" height="100px" style="position:absolute;top:100px;" >Aside{{index}}</el-aside>
                         </transition>
                         <transition name="slideleft" v-if="index==2">
-                            <el-aside v-show="swiperRealIndex==index" width="500px" >Aside{{index}}</el-aside>
+                            <el-aside v-show="swiperRealIndex==index" width="100%" height="500px" style="position:absolute;top:500px;" >Aside{{index}}</el-aside>
                         </transition>
                     </div>            
                 </div>
@@ -142,11 +145,15 @@ export default {
 
 <style lang="scss">
 .swiper-contain{
-        margin:0px;
-        padding:0px;
-        z-index:0;
-        /*width:100%;
-        height:100%;*/
+    background: -webkit-linear-gradient(#1E90FF,#BBFFEE);
+    background: -o-linear-gradient(#1E90FF,#BBFFEE);
+    background: -moz-linear-gradient(#1E90FF,#BBFFEE);
+    background: linear-gradient(#1E90FF,#BBFFEE);
+    margin:0px;
+    padding:0px;
+    z-index:0;
+    /*width:100%;
+    height:100%;*/
     %home-base{
         min-height: 100vh;
         height:100vh;
@@ -155,6 +162,10 @@ export default {
         background-repeat:no-repeat;    
     }
     .home-base{
+        background-size: 1024px ;
+        //width: 1024px;
+        //height: 300px;
+        //background-position: center center;
         @extend  %home-base;
     }
     .home-1{
